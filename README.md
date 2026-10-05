@@ -24,6 +24,12 @@ C言語によるWindows APIを利用したシステム情報取得から、TCP�
 
 ---
 
+## 🖼️ Screenshots
+
+![Overview](docs/screenshot-overview.png)
+![Resource graphs](docs/screenshot-graphs.png)
+![Process ranking](docs/screenshot-process-chart.png)
+
 # 🏗️ Architecture
 
 ```text
