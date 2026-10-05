@@ -1,0 +1,21 @@
+# ビルド成果物
+build/
+*.exe
+*.o
+*.obj
+
+# ログ・監視データ(実行時に生成される実データ。個人環境の情報が含まれるため除外)
+logs/
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# エディタ・OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
