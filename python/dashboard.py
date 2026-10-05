@@ -326,7 +326,8 @@ def live_monitor_section():
         st.metric(
             "CPU",
             f"{cpu:.2f} %",
-            delta=cpu_status
+            delta=cpu_status,
+            delta_color="normal" if cpu_status == "NORMAL" else "inverse"
         )
 
 
@@ -335,7 +336,8 @@ def live_monitor_section():
         st.metric(
             "Memory",
             f"{memory:.2f} %",
-            delta=memory_status
+            delta=memory_status,
+            delta_color="normal" if memory_status == "NORMAL" else "inverse"
         )
 
 
@@ -344,7 +346,8 @@ def live_monitor_section():
         st.metric(
             "Disk",
             f"{disk:.2f} %",
-            delta=disk_status
+            delta=disk_status,
+            delta_color="normal" if disk_status == "NORMAL" else "inverse"
         )
 
 
@@ -695,7 +698,8 @@ else:
                 "memory_mb"
             ]
         ],
-        use_container_width=True
+        use_container_width=True,
+        hide_index=True
     )
 
 
