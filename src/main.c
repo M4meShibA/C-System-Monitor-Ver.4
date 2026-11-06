@@ -902,6 +902,7 @@ int main(void)
         );
 
 
+        DWORD previous_tick = GetTickCount();
         unsigned long long previous_rx = 0;
         unsigned long long previous_tx = 0;
 
@@ -1019,7 +1020,13 @@ int main(void)
                 )
             )
             {
-                if (has_previous_network)
+                DWORD current_tick = GetTickCount();
+
+                /* Elapsed seconds since the previous network sample. */
+                double elapsed_sec =
+                    (double)(DWORD)(current_tick - previous_tick) / 1000.0;
+
+                if (has_previous_network && elapsed_sec > 0.0)
                 {
                     if (current_rx >= previous_rx)
                     {
@@ -1030,6 +1037,7 @@ int main(void)
                                     previous_rx
                                 )
                                 / 1024.0
+                                / elapsed_sec
                             );
                     }
 
@@ -1042,6 +1050,7 @@ int main(void)
                                     previous_tx
                                 )
                                 / 1024.0
+                                / elapsed_sec
                             );
                     }
                 }
@@ -1053,6 +1062,9 @@ int main(void)
                     current_tx;
 
                 has_previous_network = 1;
+
+                previous_tick =
+                    current_tick;
             }
 
 
